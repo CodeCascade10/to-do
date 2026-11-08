@@ -3,9 +3,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: todo-deployment
-  namespace: todo-app
+  namespace: web-apps
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: todo
@@ -20,3 +20,11 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
+              name: http
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi
